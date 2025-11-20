@@ -7,43 +7,44 @@
 body {
     font-family: Arial, sans-serif;
     background-color: white;
-    min-height: 100vh;
-    padding: 16px;
+    padding: 10mm;
+    margin: 0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     width: 100%;
+    max-width: 210mm;
+    margin: 0 auto;
 }
 
 .form-wrapper {
-    max-width: 1200px;
-    width: 100%;
-    border: 4px solid black;
-    padding: 16px;
+    width: 210mm;
+    min-height: 297mm;
+    border: 2px solid black;
+    padding: 3mm;
+    background: white;
+    margin: 0 auto;
 }
 
 /* Header Styles */
 .header-section {
     border: 2px solid black;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .toyota-header {
     background-color: #dc2626;
     color: white;
     text-align: center;
-    padding: 4px;
+    padding: 3px;
     font-weight: bold;
     font-size: 14px;
 }
 
 .form-title {
     text-align: center;
-    padding: 4px;
-    font-size: 12px;
+    padding: 3px;
+    font-size: 11px;
     font-weight: bold;
     border-top: 2px solid black;
 }
@@ -51,16 +52,16 @@ body {
 /* Status Legend */
 .status-legend {
     display: flex;
-    gap: 4px;
-    margin-bottom: 8px;
+    gap: 3px;
+    margin-bottom: 6px;
 }
 
 .status-item {
     flex: 1;
     border: 1px solid black;
     text-align: center;
-    padding: 4px;
-    font-size: 12px;
+    padding: 3px;
+    font-size: 9px;
     font-weight: 600;
 }
 
@@ -84,18 +85,18 @@ body {
     color: white;
 }
 
-/* NOVO LAYOUT - Tipo de Serviço em linha separada */
+/* Tipo de Serviço */
 .service-types-full {
     width: 100%;
     border: 2px solid black;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .service-types-full .section-header {
     background-color: #1e3a8a;
     color: white;
-    padding: 8px;
-    font-size: 12px;
+    padding: 6px;
+    font-size: 11px;
     font-weight: bold;
 }
 
@@ -103,169 +104,182 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
-    gap: 16px;
+    padding: 6px;
+    gap: 12px;
 }
 
 .service-options-main {
     display: flex;
-    gap: 24px;
+    gap: 16px;
     flex: 1;
 }
 
 .service-option-full {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     white-space: nowrap;
 }
 
 .service-checkbox {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
 }
 
 .service-option-full span {
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 500;
 }
 
 .os-container {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
 }
 
 .os-label {
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 500;
 }
 
 .os-input-full {
-    width: 80px;
-    height: 28px;
+    width: 60px;
+    height: 22px;
     border: 1px solid #9ca3af;
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 2px 6px;
+    font-size: 10px;
     text-align: center;
 }
 
-/* NOVO LAYOUT - 3 Colunas */
+/* LAYOUT DE 3 COLUNAS - CORRIGIDO */
 .three-columns-layout {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
+    /* Removido min-height fixo */
 }
 
 .column {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
-/* Form Sections */
+/* Form Sections - CORRIGIDO: altura automática */
 .form-section {
     border: 2px solid black;
     width: 100%;
+    /* Removido flex: 1 e min-height */
+    display: block; /* Mudei de flex para block */
+    position: relative;
+    overflow: hidden;
 }
 
 .section-header {
     background-color: #1e3a8a;
     color: white;
-    padding: 8px;
-    font-size: 12px;
+    padding: 6px;
+    font-size: 10px;
     font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    position: relative;
+    z-index: 10;
+    /* Removido flex-shrink */
 }
 
 .section-header.gray {
     background-color: #374151;
 }
 
-.square-icon {
-    width: 12px;
-    height: 12px;
-    border: 1px solid white;
-}
-
-/* Items List - ATUALIZADO para 3 colunas */
+/* Items List - CORRIGIDO */
 .items-list {
-    padding: 8px;
+    padding: 6px;
+    /* Removido flex: 1 e display: flex */
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .item-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2px 0;
+    padding: 1px 0;
+    margin: 0;
     border-bottom: 1px solid #e5e7eb;
-    font-size: 9px;
-    flex-direction: row-reverse; /* INVERTE a ordem - quadradinhos primeiro */
+    font-size: 7px;
+    flex-direction: row-reverse;
+    min-height: 12px;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    /* Removido flex-shrink */
 }
 
 .item-name {
     flex: 1;
-    padding-left: 8px; /* Muda para left pois agora está à direita */
+    padding-left: 6px;
     text-align: left;
+    font-size: 7px;
+    line-height: 1.1;
+    margin: 0;
+    position: relative;
+    z-index: 3;
 }
 
 .status-box-container {
     flex-shrink: 0;
+    position: relative;
+    z-index: 4;
 }
 
 /* =========================================== */
-/* SISTEMA 1: QUADRADINHOS DAS LISTAS (múltipla seleção) */
+/* QUADRADINHOS DAS LISTAS */
 /* =========================================== */
 
-/* Container dos quadradinhos das listas */
 .items-list .status-box {
     display: flex;
-    gap: 2px;
+    gap: 1px;
+    position: relative;
+    z-index: 5;
 }
 
-/* Botões individuais das listas */
 .items-list .status-button {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     border: 1px solid #4b5563;
     cursor: pointer;
-    transition: all 0.2s;
     opacity: 0.3;
     position: relative;
+    z-index: 6;
 }
 
-/* Cores mais vivas para os status boxes das listas */
 .items-list .status-button:nth-child(1) {
-    background-color: #00f359ff !important;
+    background-color: #00f359ff;
 }
 
 .items-list .status-button:nth-child(2) {
-    background-color: #ffb700ff !important;
+    background-color: #ffb700ff;
 }
 
 .items-list .status-button:nth-child(3) {
-    background-color: #f70d0dff !important;
+    background-color: #f70d0dff;
 }
 
 .items-list .status-button:nth-child(4) {
-    background-color: #d2d7dfff !important;
+    background-color: #d2d7dfff;
 }
 
 .items-list .status-button.checked {
-    opacity: 1 !important;
+    opacity: 1;
     border-width: 2px;
-    transform: scale(1.1);
+    z-index: 7;
 }
 
-.items-list .status-button:hover {
-    opacity: 0.8;
-}
-
-/* Checkmark para quadradinhos das listas */
 .items-list .status-button.checked::after {
     content: '✓';
     position: absolute;
@@ -273,177 +287,149 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-    font-size: 10px;
+    font-size: 8px;
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-}
-
-/* Cores específicas para o checkmark para melhor contraste */
-.items-list .status-button:nth-child(1).checked::after {
-    color: black;
-}
-
-.items-list .status-button:nth-child(2).checked::after {
-    color: black;
-}
-
-.items-list .status-button:nth-child(3).checked::after {
-    color: white;
-}
-
-.items-list .status-button:nth-child(4).checked::after {
-    color: black;
+    z-index: 8;
 }
 
 /* =========================================== */
-/* SISTEMA 2: QUADRADINHOS DOS FREIOS (múltipla seleção) */
+/* SEÇÃO FREIOS - CORRIGIDO */
 /* =========================================== */
 
-/* Estilos para a nova seção de freios */
 .brakes-content {
-    padding: 8px;
+    padding: 6px;
+    position: relative;
+    z-index: 1;
+    /* Removido flex: 1 e display: flex */
 }
 
-/* Categoria de freio */
 .brake-category {
     display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
+    gap: 6px;
+    padding-bottom: 8px;
     border-bottom: 1px solid #d1d5db;
+    position: relative;
+    /* Removido flex e min-height */
 }
 
-.brake-category:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-/* Ícone do freio */
 .brake-icon {
-    width: 64px;
+    width: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
 }
 
 .brake-svg {
-    width: 48px;
-    height: 48px;
+    width: 35px;
+    height: 35px;
 }
 
 .brake-name {
-    font-size: 10px;
+    font-size: 8px;
     font-weight: bold;
     text-align: center;
 }
 
 .brake-warning {
-    font-size: 20px;
+    font-size: 16px;
 }
 
-/* Detalhes do freio */
 .brake-details {
     flex: 1;
+    position: relative;
+    z-index: 2;
+    /* Removido display: flex */
 }
 
 .found-label {
     text-align: right;
-    font-size: 8px;
+    font-size: 7px;
     font-weight: bold;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
 }
 
-/* Linha do freio */
 .brake-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 4px;
-}
-
-.brake-row:last-child {
-    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    /* Removido flex-shrink e min-height */
+    margin-bottom: 3px; /* Readicionado margin */
 }
 
 .brake-label {
-    font-size: 8px;
-    font-weight: bold;
-    width: 112px;
-}
-
-.brake-sub {
-    font-weight: normal;
     font-size: 7px;
+    font-weight: bold;
+    width: 90px;
 }
 
-/* Grupo de input */
 .brake-input-group {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
+    position: relative;
+    z-index: 3;
 }
 
 .brake-input {
-    height: 20px;
-    width: 56px;
+    height: 16px;
+    width: 45px;
     text-align: center;
-    font-size: 10px;
+    font-size: 8px;
     border: 1px solid #9ca3af;
-    padding: 0 4px;
+    padding: 0 3px;
 }
 
 .brake-unit {
-    font-size: 7px;
+    font-size: 6px;
     color: #6b7280;
-    width: 24px;
+    width: 20px;
 }
 
-/* Status boxes para freios (múltipla seleção) */
 .brakes-content .status-boxes {
     display: flex;
-    gap: 2px;
+    gap: 1px;
+    position: relative;
+    z-index: 4;
 }
 
 .brakes-content .status-box {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     border: 1px solid #4b5563;
     cursor: pointer;
-    transition: all 0.2s;
     opacity: 0.3;
     position: relative;
+    z-index: 5;
 }
 
-/* Cores dos quadradinhos dos freios */
 .brakes-content .status-box:nth-child(1) {
-    background-color: #00f359ff !important;
+    background-color: #00f359ff;
 }
 
 .brakes-content .status-box:nth-child(2) {
-    background-color: #ffb700ff !important;
+    background-color: #ffb700ff;
 }
 
 .brakes-content .status-box:nth-child(3) {
-    background-color: #f70d0dff !important;
+    background-color: #f70d0dff;
 }
 
 .brakes-content .status-box:nth-child(4) {
-    background-color: #d2d7dfff !important;
+    background-color: #d2d7dfff;
 }
 
 .brakes-content .status-box.checked {
-    opacity: 1 !important;
+    opacity: 1;
     border-width: 2px;
-    transform: scale(1.1);
+    z-index: 6;
 }
 
-.brakes-content .status-box:hover {
-    opacity: 0.8;
-}
-
-/* Checkmark para quadradinhos dos freios */
 .brakes-content .status-box.checked::after {
     content: '✓';
     position: absolute;
@@ -451,203 +437,139 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-    font-size: 10px;
+    font-size: 8px;
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-}
-
-/* Cores específicas para o checkmark dos freios */
-.brakes-content .status-box:nth-child(1).checked::after {
-    color: black;
-}
-
-.brakes-content .status-box:nth-child(2).checked::after {
-    color: black;
-}
-
-.brakes-content .status-box:nth-child(3).checked::after {
-    color: white;
-}
-
-.brakes-content .status-box:nth-child(4).checked::after {
-    color: black;
-}
-
-/* Ícone do header de freios */
-.brakes-icon {
-    width: 16px;
-    height: 16px;
+    z-index: 7;
 }
 
 /* =========================================== */
-/* SEÇÃO CALIBRAGEM DE PNEUS (NOVA VERSÃO) */
+/* CALIBRAGEM DE PNEUS - CORRIGIDO */
 /* =========================================== */
 
 .section.tire-calibration {
     border: 2px solid black;
     background-color: white;
-    border-radius: 4px;
-    overflow: hidden;
     margin-bottom: 0;
+    position: relative;
+    /* Removido flex: 1 */
+    display: block; /* Mudei de flex para block */
 }
 
 .tire-header {
     background-color: #374151;
     color: white;
-    padding: 8px 12px;
-    font-size: 12px;
+    padding: 6px 8px;
+    font-size: 10px;
     font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.tire-icon {
-    width: 16px;
-    height: 16px;
+    gap: 6px;
+    position: relative;
+    z-index: 10;
+    /* Removido flex-shrink */
 }
 
 .tire-content {
     background-color: #f8fafc;
-    padding: 12px;
+    padding: 8px;
+    position: relative;
+    z-index: 1;
+    /* Removido flex: 1 e display: flex */
 }
 
 .calibrated-label {
     text-align: right;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 8px; /* Readicionado margin */
     color: #374151;
+    /* Removido flex-shrink */
 }
 
-/* Linhas dos pneus */
 .tire-rows {
     margin-bottom: 0;
+    /* Removido flex: 1 e display: flex */
 }
 
 .tire-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
-    padding: 6px 0;
+    padding: 4px 0;
     border-bottom: 1px solid #e5e7eb;
-}
-
-.tire-row:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    /* Removido flex-shrink e min-height */
+    margin-bottom: 6px; /* Readicionado margin */
 }
 
 .tire-label {
-    font-size: 9px;
+    font-size: 8px;
     font-weight: bold;
     color: #1f2937;
-    width: 120px;
+    width: 100px;
 }
 
 .tire-input-group {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
+    position: relative;
+    z-index: 3;
 }
 
 .tire-input {
-    height: 24px;
-    width: 60px;
+    height: 18px;
+    width: 50px;
     text-align: center;
-    font-size: 11px;
+    font-size: 9px;
     font-weight: bold;
     border: 1px solid #9ca3af;
-    border-radius: 2px;
-    padding: 0 6px;
+    padding: 0 4px;
     background-color: white;
 }
 
-.tire-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-}
-
-.tire-input::placeholder {
-    color: #9ca3af;
-    font-weight: normal;
-}
-
 .tire-unit {
-    font-size: 8px;
+    font-size: 7px;
     color: #6b7280;
-    width: 25px;
+    width: 20px;
     font-weight: 600;
 }
 
 /* =========================================== */
-/* ESTILOS PARA RISCO NOS QUADRADINHOS - X PRETO */
+/* ESTILOS PARA RISCO */
 /* =========================================== */
 
-/* Estilo de risco para quadradinhos das LISTAS */
-.items-list .status-button.strikethrough {
-    position: relative;
-    opacity: 0.6 !important;
-}
-
-.items-list .status-button.strikethrough::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background-color: #000000;
-    transform: translateY(-50%) rotate(-45deg);
-    z-index: 2;
-}
-
-.items-list .status-button.strikethrough::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background-color: #000000;
-    transform: translateY(-50%) rotate(45deg);
-    z-index: 2;
-}
-
-/* Estilo de risco para quadradinhos dos FREIOS */
+.items-list .status-button.strikethrough,
 .brakes-content .status-box.strikethrough {
     position: relative;
-    opacity: 0.6 !important;
+    opacity: 0.6;
+    z-index: 8;
 }
 
-.brakes-content .status-box.strikethrough::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background-color: #000000;
-    transform: translateY(-50%) rotate(-45deg);
-    z-index: 2;
-}
-
+.items-list .status-button.strikethrough::before,
+.items-list .status-button.strikethrough::after,
+.brakes-content .status-box.strikethrough::before,
 .brakes-content .status-box.strikethrough::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 2px;
     background-color: #000000;
-    transform: translateY(-50%) rotate(45deg);
-    z-index: 2;
+    z-index: 9;
 }
 
-/* =========================================== */
-/* ESTILOS PARA RISCO NOS TEXTOS - TRANSPARENTE E APENAS NO TEXTO */
-/* =========================================== */
+.items-list .status-button.strikethrough::before,
+.brakes-content .status-box.strikethrough::before {
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.items-list .status-button.strikethrough::after,
+.brakes-content .status-box.strikethrough::after {
+    transform: translateY(-50%) rotate(45deg);
+}
 
 .item-row.all-checked {
     position: relative;
@@ -657,95 +579,109 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    left: 8px; /* Começa depois dos quadradinhos */
-    right: auto; /* Remove right automático */
-    width: calc(100% - 8px - 90px); /* Calcula largura até o final do texto */
-    height: 2px;
+    left: 6px;
+    width: calc(100% - 6px - 70px);
+    height: 1px;
     background-color: #000000;
-    opacity: 0.4; /* MAIS TRANSPARENTE */
+    opacity: 0.4;
     transform: translateY(-50%);
     z-index: 1;
 }
 
 .item-row.all-checked .item-name {
     position: relative;
-    color: #1f2937; /* COR ORIGINAL DO TEXTO - não muda a cor */
-    text-decoration: none; /* Remove o line-through padrão */
-    opacity: 1; /* TEXTO NORMAL - sem transparência */
-}
-
-.item-row.all-checked .status-box-container {
-    position: relative;
+    color: #1f2937;
+    text-decoration: none;
+    opacity: 1;
     z-index: 2;
 }
 
-.item-row.all-checked .status-button {
-    position: relative;
-    z-index: 2;
-    opacity: 1 !important;
-}
-
 /* =========================================== */
-/* RESPONSIVE DESIGN */
+/* CSS PARA IMPRESSÃO - CORRIGIDO */
 /* =========================================== */
 
-@media (max-width: 768px) {
+@media print {
+    @page {
+        margin: 0;
+        size: A4 portrait;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        width: 210mm;
+        height: 297mm;
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .container {
+        width: 210mm;
+        max-width: 210mm;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    
+    .form-wrapper {
+        width: 210mm;
+        min-height: 297mm;
+        border: 2px solid black;
+        padding: 8mm;
+        margin: 0;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        display: block;
+    }
+    
+    /* FORÇA O LAYOUT DE 3 COLUNAS */
     .three-columns-layout {
-        flex-direction: column;
-    }
-    
-    .status-legend {
-        flex-wrap: wrap;
-    }
-    
-    .status-item {
-        flex: 1 0 45%;
-        margin-bottom: 4px;
-    }
-    
-    .service-types-container {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .service-options-main {
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-    }
-    
-    .item-row {
+        display: flex;
         flex-direction: row;
-    }
-    
-    .brake-category {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .brake-details {
-        width: 100%;
-    }
-    
-    .brake-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-    
-    .brake-input-group {
-        width: 100%;
-        justify-content: flex-end;
-    }
-    
-    .tire-row {
-        flex-direction: column;
-        align-items: flex-start;
         gap: 6px;
+        width: 100%;
+        height: auto;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        /* Removido min-height */
     }
     
-    .tire-input-group {
-        width: 100%;
-        justify-content: flex-start;
+    .column {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 6px;
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
+    
+    /* Remove elementos de tela */
+    .no-print {
+        display: none;
+    }
+    
+    /* Garante que todos os elementos sejam mostrados corretamente */
+    .form-section,
+    .items-list,
+    .item-row,
+    .status-box-container,
+    .brakes-content,
+    .brake-category,
+    .tire-content {
+        position: relative;
+        overflow: visible;
+    }
+    
+    /* Remove flex das seções na impressão também */
+    .form-section {
+        /* Removido flex: 1 e min-height */
+        display: block;
+    }
+}
+
+/* Remove o padding do body durante a impressão */
+body.print-mode {
+    padding: 0;
+    margin: 0;
 }

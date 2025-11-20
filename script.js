@@ -401,3 +401,53 @@ class InspecaoVeicular {
 document.addEventListener('DOMContentLoaded', () => {
     new InspecaoVeicular();
 });
+// Função para imprimir corretamente
+function imprimirCorretamente() {
+    // Adiciona classe para modo impressão
+    document.body.classList.add('print-mode');
+    
+    console.log('Preparando para impressão...');
+    
+    // Delay um pouco maior para garantir tudo carregar
+    setTimeout(() => {
+        console.log('Abrindo janela de impressão...');
+        window.print();
+        
+        // Remove a classe após a impressão
+        setTimeout(() => {
+            document.body.classList.remove('print-mode');
+            console.log('Impressão concluída');
+        }, 500);
+    }, 800);
+}
+
+// Adiciona botão de impressão
+document.addEventListener('DOMContentLoaded', function() {
+    // Remove botão anterior se existir
+    const oldButton = document.querySelector('.print-button');
+    if (oldButton) oldButton.remove();
+    
+    const printButton = document.createElement('button');
+    printButton.innerHTML = '🖨️ Imprimir Formulário';
+    printButton.className = 'print-button no-print';
+    printButton.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 18px;
+        background: #dc2626;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        z-index: 10000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        font-family: Arial, sans-serif;
+    `;
+    printButton.onclick = imprimirCorretamente;
+    document.body.appendChild(printButton);
+    
+    console.log('Botão de impressão adicionado');
+});
