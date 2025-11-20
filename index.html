@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspeção Veicular - Toyota</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+
+            <!-- Header Toyota -->
+            <div class="header-section">
+                <div class="toyota-header">
+                    TOYOTA
+                </div>
+                <div class="form-title">
+                    FOLHA DE INSPEÇÃO - CONDIÇÕES DE ENTRADA E SAÍDA DO VEÍCULO - SUV
+                </div>
+            </div>
+
+            <!-- Legenda de Status -->
+            <div class="status-legend">
+                <div class="status-item ok">OK/SUBSTITUÍDO</div>
+                <div class="status-item warning">REQUER TROCA / REPARO FUTURO</div>
+                <div class="status-item error">IMEDIATA RES. NÃO EXECUTADO</div>
+                <div class="status-item original">ORIGINAL / NÃO ORIGINAL</div>
+            </div>
+
+            <!-- TIPO DE SERVIÇO - AGORA EM LINHA SEPARADA -->
+            <div class="service-types-full">
+                <div class="section-header">
+                    TIPO DE SERVIÇO
+                </div>
+                <div class="service-types-container">
+                    <div class="service-options-main">
+                        <label class="service-option-full">
+                            <input type="checkbox" class="service-checkbox">
+                            <span>Revisão</span>
+                        </label>
+                        <label class="service-option-full">
+                            <input type="checkbox" class="service-checkbox">
+                            <span>Boas-vindas (itens marcados com *)</span>
+                        </label>
+                        <label class="service-option-full">
+                            <input type="checkbox" class="service-checkbox">
+                            <span>Diagnóstico / Reparo / Outros (itens abaixo não se aplicam)</span>
+                        </label>
+                        <label class="service-option-full">
+                            <input type="checkbox" class="service-checkbox">
+                            <span>Toyota 10</span>
+                        </label>
+                    </div>
+                    <div class="os-container">
+                        <span class="os-label">Nº OS:</span>
+                        <input type="text" class="os-input-full" maxlength="5" placeholder="00000">
+                    </div>
+                </div>
+            </div>
+
+            <!-- NOVO LAYOUT DE 3 COLUNAS COM ORDEM CORRIGIDA -->
+            <div class="three-columns-layout">
+
+                <!-- Coluna 1 -->
+                <div class="column">
+                    <!-- 1 - PARTE INTERNA -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <div class="square-icon"></div>
+                            PARTE INTERNA
+                        </div>
+                        <div class="items-list" id="parte-interna-list">
+                            <!-- Itens serão preenchidos via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- 2 - PARTE EXTERNA -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            PARTE EXTERNA
+                        </div>
+                        <div class="items-list" id="parte-externa-list">
+                            <!-- Itens serão preenchidos via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- 3 - COM CAPO ABERTO -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            COM CAPO ABERTO
+                        </div>
+                        <div class="items-list" id="capo-aberto-list">
+                            <!-- Itens serão preenchidos via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 -->
+                <div class="column">
+                    <!-- 4 - FLUIDOS -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            FLUIDOS
+                        </div>
+                        <div class="items-list" id="fluidos-list">
+                            <!-- Itens serão preenchidos via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- 5 - EMBAIXO DO VEÍCULO -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            EMBAIXO DO VEÍCULO
+                        </div>
+                        <div class="items-list" id="embaixo-veiculo-list">
+                            <!-- Itens serão preenchidos via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 3 -->
+                <div class="column">
+                    <!-- 6 - CALIBRAGEM DOS PNEUS -->
+                    <div class="form-section">
+                        <div class="section-header gray">
+                            CALIBRAGEM DOS PNEUS *
+                        </div>
+                        <div class="tire-calibration">
+                            <div class="tire-row">
+                                <div class="tire-input-group">
+                                    <div class="tire-label">DIANTEIRO ESQUERDO</div>
+                                    <input type="text" placeholder="32" class="tire-input" id="dianteiro-esq">
+                                    <div class="tire-unit">psi</div>
+                                </div>
+                                <div class="tire-input-group">
+                                    <div class="tire-label">DIANTEIRO DIREITO</div>
+                                    <input type="text" placeholder="32" class="tire-input" id="dianteiro-dir">
+                                    <div class="tire-unit">psi</div>
+                                </div>
+                            </div>
+                            <div class="tire-row">
+                                <div class="tire-input-group">
+                                    <div class="tire-label">TRASEIRO ESQUERDO</div>
+                                    <input type="text" placeholder="32" class="tire-input" id="traseiro-esq">
+                                    <div class="tire-unit">psi</div>
+                                </div>
+                                <div class="tire-input-group">
+                                    <div class="tire-label">TRASEIRO DIREITO</div>
+                                    <input type="text" placeholder="32" class="tire-input" id="traseiro-dir">
+                                    <div class="tire-unit">psi</div>
+                                </div>
+                            </div>
+                            <div class="tire-single">
+                                <div class="tire-input-group">
+                                    <div class="tire-label">ESTEPE</div>
+                                    <input type="text" placeholder="35" class="tire-input" id="estepe">
+                                    <div class="tire-unit">psi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7 - FREIOS -->
+                    <div class="form-section">
+                        <div class="section-header gray">
+                            FREIOS
+                        </div>
+                        <div class="brakes-section">
+                            <!-- Freios Dianteiro -->
+                            <div class="brake-group">
+                                <div class="brake-wheel">
+                                    <svg class="wheel-svg" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="35" fill="none" stroke="#374151" stroke-width="4" />
+                                        <circle cx="50" cy="50" r="25" fill="none" stroke="#374151" stroke-width="8" />
+                                        <circle cx="50" cy="50" r="8" fill="#374151" />
+                                        <path d="M 50 15 L 50 35 M 50 65 L 50 85 M 15 50 L 35 50 M 65 50 L 85 50"
+                                            stroke="#374151" stroke-width="3" />
+                                    </svg>
+                                </div>
+                                <div class="brake-title">ENCHOVIADO DIANTEIRO</div>
+                                <div class="brake-inputs">
+                                    <div class="brake-input-group">
+                                        <div class="brake-label">TRAT. ESQUERDA</div>
+                                        <div class="brake-input-with-status">
+                                            <input type="text" class="brake-input" id="pneu-diant-esq">
+                                            <div class="status-box-container" data-id="pneu-de"></div>
+                                        </div>
+                                    </div>
+                                    <div class="brake-input-group">
+                                        <div class="brake-label">TRAT. DIREITA</div>
+                                        <div class="brake-input-with-status">
+                                            <input type="text" class="brake-input" id="pneu-diant-dir">
+                                            <div class="status-box-container" data-id="pneu-dd"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="brake-type">FREIO: Disco dianteiro</div>
+                            </div>
+
+                            <!-- Freios Traseiro -->
+                            <div class="brake-group">
+                                <div class="brake-wheel">
+                                    <svg class="wheel-svg" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="35" fill="none" stroke="#374151" stroke-width="4" />
+                                        <circle cx="50" cy="50" r="25" fill="none" stroke="#374151" stroke-width="8" />
+                                        <circle cx="50" cy="50" r="8" fill="#374151" />
+                                        <path d="M 50 15 L 50 35 M 50 65 L 50 85 M 15 50 L 35 50 M 65 50 L 85 50"
+                                            stroke="#374151" stroke-width="3" />
+                                    </svg>
+                                </div>
+                                <div class="brake-title">ENCHOVIADO TRASEIRO</div>
+                                <div class="brake-inputs">
+                                    <div class="brake-input-group">
+                                        <div class="brake-label">TRAT. ESQUERDA</div>
+                                        <div class="brake-input-with-status">
+                                            <input type="text" class="brake-input" id="pneu-tras-esq">
+                                            <div class="status-box-container" data-id="pneu-te"></div>
+                                        </div>
+                                    </div>
+                                    <div class="brake-input-group">
+                                        <div class="brake-label">TRAT. DIREITA</div>
+                                        <div class="brake-input-with-status">
+                                            <input type="text" class="brake-input" id="pneu-tras-dir">
+                                            <div class="status-box-container" data-id="pneu-td"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="brake-type">FREIO: Disco traseiro</div>
+                            </div>
+
+                            <!-- Tambores -->
+                            <div class="brake-drums">
+                                <div class="drums-title">TAMBORES (se aplicável)</div>
+                                <div class="drums-item">
+                                    <span>Freio de mão / estacionamento</span>
+                                    <div class="status-box-container" data-id="freio-mao"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
