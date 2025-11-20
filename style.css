@@ -22,7 +22,7 @@ body {
     min-height: 297mm;
     border: 2px solid black;
     padding: 3mm;
-    background: white;
+    background: rgb(241, 219, 177);
     margin: 0 auto;
 }
 
@@ -470,7 +470,7 @@ body {
 }
 
 .tire-content {
-    background-color: #f8fafc;
+    background-color: rgb(241, 219, 177);
     padding: 8px;
     position: relative;
     z-index: 1;
