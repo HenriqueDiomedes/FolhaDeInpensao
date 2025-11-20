@@ -162,6 +162,9 @@ class InspecaoVeicular {
         }
 
         console.log('Form data updated:', this.formData);
+        
+        // Verificar se todos estão marcados para aplicar X
+        this.checkAllCheckedForStrike(id);
     }
 
     updateStatusBox(container, id) {
@@ -195,6 +198,24 @@ class InspecaoVeicular {
                 itemRow.classList.remove('all-checked');
             }
         }
+    }
+
+    // NOVO MÉTODO: Verificar se todos estão marcados e aplicar X
+    checkAllCheckedForStrike(id) {
+        const container = document.querySelector(`.status-box-container[data-id="${id}"]`);
+        if (!container) return;
+
+        const buttons = container.querySelectorAll('.status-button');
+        const checkedValues = this.formData[id] || [];
+        const allChecked = checkedValues.length === 4;
+
+        buttons.forEach(button => {
+            if (allChecked) {
+                button.classList.add('strikethrough');
+            } else {
+                button.classList.remove('strikethrough');
+            }
+        });
     }
 
     initializeInputs() {
@@ -280,7 +301,7 @@ class InspecaoVeicular {
         });
     }
 
-    // NOVO MÉTODO: Verificar e aplicar risco nos quadradinhos
+    // MÉTODO: Verificar e aplicar risco nos quadradinhos dos freios
     checkAndApplyStrikeThrough(inputKey, value) {
         // Encontrar o container de status boxes correspondente
         const statusKey = inputKey + '-status';
@@ -332,6 +353,27 @@ class InspecaoVeicular {
         }
         
         console.log('Form data updated:', this.formData);
+        
+        // Verificar se todos estão marcados para aplicar X
+        this.checkAllBrakesCheckedForStrike(key);
+    }
+
+    // NOVO MÉTODO: Verificar se todos os quadradinhos dos freios estão marcados
+    checkAllBrakesCheckedForStrike(key) {
+        const container = document.querySelector(`.status-boxes[data-key="${key}"]`);
+        if (!container) return;
+
+        const boxes = container.querySelectorAll('.status-box');
+        const checkedValues = this.formData[key] || [];
+        const allChecked = checkedValues.length === 4;
+
+        boxes.forEach(box => {
+            if (allChecked) {
+                box.classList.add('strikethrough');
+            } else {
+                box.classList.remove('strikethrough');
+            }
+        });
     }
 
     // MÉTODO: Atualizar visual dos quadradinhos dos freios

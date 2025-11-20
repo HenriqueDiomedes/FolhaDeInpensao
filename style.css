@@ -204,14 +204,12 @@ body {
     padding: 2px 0;
     border-bottom: 1px solid #e5e7eb;
     font-size: 9px;
-    flex-direction: row-reverse;
-    /* INVERTE a ordem - quadradinhos primeiro */
+    flex-direction: row-reverse; /* INVERTE a ordem - quadradinhos primeiro */
 }
 
 .item-name {
     flex: 1;
-    padding-left: 8px;
-    /* Muda para left pois agora está à direita */
+    padding-left: 8px; /* Muda para left pois agora está à direita */
     text-align: left;
 }
 
@@ -584,10 +582,73 @@ body {
 }
 
 /* =========================================== */
-/* ESTILOS GERAIS */
+/* ESTILOS PARA RISCO NOS QUADRADINHOS - X PRETO */
 /* =========================================== */
 
-/* Estilo para quando todos os quadradinhos estão marcados (apenas para listas) */
+/* Estilo de risco para quadradinhos das LISTAS */
+.items-list .status-button.strikethrough {
+    position: relative;
+    opacity: 0.6 !important;
+}
+
+.items-list .status-button.strikethrough::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #000000;
+    transform: translateY(-50%) rotate(-45deg);
+    z-index: 2;
+}
+
+.items-list .status-button.strikethrough::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #000000;
+    transform: translateY(-50%) rotate(45deg);
+    z-index: 2;
+}
+
+/* Estilo de risco para quadradinhos dos FREIOS */
+.brakes-content .status-box.strikethrough {
+    position: relative;
+    opacity: 0.6 !important;
+}
+
+.brakes-content .status-box.strikethrough::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #000000;
+    transform: translateY(-50%) rotate(-45deg);
+    z-index: 2;
+}
+
+.brakes-content .status-box.strikethrough::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #000000;
+    transform: translateY(-50%) rotate(45deg);
+    z-index: 2;
+}
+
+/* =========================================== */
+/* ESTILOS PARA RISCO NOS TEXTOS - TRANSPARENTE E APENAS NO TEXTO */
+/* =========================================== */
+
 .item-row.all-checked {
     position: relative;
 }
@@ -596,18 +657,21 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
+    left: 8px; /* Começa depois dos quadradinhos */
+    right: auto; /* Remove right automático */
+    width: calc(100% - 8px - 90px); /* Calcula largura até o final do texto */
     height: 2px;
-    background-color: #dc2626;
+    background-color: #000000;
+    opacity: 0.4; /* MAIS TRANSPARENTE */
     transform: translateY(-50%);
     z-index: 1;
 }
 
 .item-row.all-checked .item-name {
     position: relative;
-    color: #6b7280;
-    text-decoration: line-through;
+    color: #1f2937; /* COR ORIGINAL DO TEXTO - não muda a cor */
+    text-decoration: none; /* Remove o line-through padrão */
+    opacity: 1; /* TEXTO NORMAL - sem transparência */
 }
 
 .item-row.all-checked .status-box-container {
@@ -629,125 +693,59 @@ body {
     .three-columns-layout {
         flex-direction: column;
     }
-
+    
     .status-legend {
         flex-wrap: wrap;
     }
-
+    
     .status-item {
         flex: 1 0 45%;
         margin-bottom: 4px;
     }
-
+    
     .service-types-container {
         flex-direction: column;
         gap: 12px;
     }
-
+    
     .service-options-main {
         flex-wrap: wrap;
         gap: 12px;
         justify-content: center;
     }
-
+    
     .item-row {
         flex-direction: row;
     }
-
+    
     .brake-category {
         flex-direction: column;
         align-items: center;
     }
-
+    
     .brake-details {
         width: 100%;
     }
-
+    
     .brake-row {
         flex-direction: column;
         align-items: flex-start;
         gap: 4px;
     }
-
+    
     .brake-input-group {
         width: 100%;
         justify-content: flex-end;
     }
-
+    
     .tire-row {
         flex-direction: column;
         align-items: flex-start;
         gap: 6px;
     }
-
+    
     .tire-input-group {
         width: 100%;
         justify-content: flex-start;
     }
-}
-/* =========================================== */
-/* ESTILOS PARA RISCO NOS QUADRADINHOS - X PRETO */
-/* =========================================== */
-
-/* Estilo de risco para quadradinhos dos freios */
-.brakes-content .status-box.strikethrough {
-    position: relative;
-    opacity: 0.6 !important;
-}
-
-.brakes-content .status-box.strikethrough::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #000000; /* PRETO */
-    transform: translateY(-50%) rotate(-45deg);
-    z-index: 2;
-}
-
-.brakes-content .status-box.strikethrough::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #000000; /* PRETO */
-    transform: translateY(-50%) rotate(45deg);
-    z-index: 2;
-}
-
-/* Quando há risco, remove o checkmark */
-.brakes-content .status-box.strikethrough.checked::after {
-    content: '';
-    background-color: #000000; /* PRETO */
-}
-
-/* Garante que o risco fique acima das cores - TODOS PRETOS */
-.brakes-content .status-box.strikethrough:nth-child(1)::before,
-.brakes-content .status-box.strikethrough:nth-child(1)::after {
-    background-color: #000000; /* PRETO */
-}
-
-.brakes-content .status-box.strikethrough:nth-child(2)::before,
-.brakes-content .status-box.strikethrough:nth-child(2)::after {
-    background-color: #000000; /* PRETO */
-}
-
-.brakes-content .status-box.strikethrough:nth-child(3)::before,
-.brakes-content .status-box.strikethrough:nth-child(3)::after {
-    background-color: #000000; /* PRETO */
-}
-
-.brakes-content .status-box.strikethrough:nth-child(4)::before,
-.brakes-content .status-box.strikethrough:nth-child(4)::after {
-    background-color: #000000; /* PRETO */
-}
-
-/* Opcional: Aumentar um pouco a espessura do X para melhor visibilidade */
-.brakes-content .status-box.strikethrough::before,
-.brakes-content .status-box.strikethrough::after {
-    height: 3px; /* Um pouco mais grosso */
 }
