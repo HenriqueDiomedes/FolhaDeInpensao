@@ -204,12 +204,14 @@ body {
     padding: 2px 0;
     border-bottom: 1px solid #e5e7eb;
     font-size: 9px;
-    flex-direction: row-reverse; /* INVERTE a ordem - quadradinhos primeiro */
+    flex-direction: row-reverse;
+    /* INVERTE a ordem - quadradinhos primeiro */
 }
 
 .item-name {
     flex: 1;
-    padding-left: 8px; /* Muda para left pois agora está à direita */
+    padding-left: 8px;
+    /* Muda para left pois agora está à direita */
     text-align: left;
 }
 
@@ -361,28 +363,80 @@ body {
     .three-columns-layout {
         flex-direction: column;
     }
-    
+
     .status-legend {
         flex-wrap: wrap;
     }
-    
+
     .status-item {
         flex: 1 0 45%;
         margin-bottom: 4px;
     }
-    
+
     .service-types-container {
         flex-direction: column;
         gap: 12px;
     }
-    
+
     .service-options-main {
         flex-wrap: wrap;
         gap: 12px;
         justify-content: center;
     }
-    
+
     .item-row {
-        flex-direction: row; /* Volta ao normal em mobile se necessário */
+        flex-direction: row;
+        /* Volta ao normal em mobile se necessário */
     }
+}
+
+/* Estilos para os quadradinhos marcados */
+.status-button.checked {
+    position: relative;
+}
+
+.status-button.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Estilo para quando todos os quadradinhos estão marcados */
+.item-row.all-checked {
+    position: relative;
+}
+
+.item-row.all-checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #dc2626;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.item-row.all-checked .item-name {
+    position: relative;
+    color: #6b7280;
+    text-decoration: line-through;
+}
+
+.item-row.all-checked .status-box-container {
+    position: relative;
+    z-index: 2;
+}
+
+.item-row.all-checked .status-button {
+    position: relative;
+    z-index: 2;
+    opacity: 1 !important;
+    /* Mantém as cores visíveis */
 }

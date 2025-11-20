@@ -2,22 +2,7 @@ class InspecaoVeicular {
     constructor() {
         this.formData = {};
         this.colors = ['#22c55e', '#fbbf24', '#ef4444', '#9ca3af'];
-
-        this.itensCapoAberto = [
-            'Nível de óleo do motor',
-            'Cor e estado do óleo do motor',
-            'Fluido de freio',
-            'Fluido de direção hidráulica',
-            'Líquido de arrefecimento',
-            'Água do radiador',
-            'Bateria e bornes',
-            'Correia do alternador',
-            'Correia de comando (se aplicável)',
-            'Filtro de ar do motor',
-            'Vazamentos em geral',
-            'Limpeza do compartimento do motor'
-        ];
-
+        
         this.itensParteInterna = [
             'Relógio e computador de bordo',
             'Funcionamento dos controles',
@@ -74,23 +59,31 @@ class InspecaoVeicular {
             'Formação de motor jrrador diantil'
         ];
 
-        this.itensLuzesDianteiro = [
-            'Farol baixo, médio e alto',
-            'Pisca - esquerdo e direito',
-            'Farol de neblina'
+        this.itensCapoAberto = [
+            'Nível de óleo do motor',
+            'Cor e estado do óleo do motor',
+            'Fluido de freio',
+            'Fluido de direção hidráulica',
+            'Líquido de arrefecimento',
+            'Água do radiador',
+            'Bateria e bornes',
+            'Correia do alternador',
+            'Correia de comando (se aplicável)',
+            'Filtro de ar do motor',
+            'Vazamentos em geral',
+            'Limpeza do compartimento do motor'
         ];
 
         this.init();
     }
 
     init() {
-        this.renderItemsList('capo-aberto-list', this.itensCapoAberto, 'ca');
         this.renderItemsList('parte-interna-list', this.itensParteInterna, 'pi');
+        this.renderItemsList('parte-externa-list', this.itensParteExterna, 'pe');
+        this.renderItemsList('capo-aberto-list', this.itensCapoAberto, 'ca');
         this.renderItemsList('fluidos-list', this.itensFluidos, 'fl');
         this.renderItemsList('embaixo-veiculo-list', this.itensEmbaixoVeiculo, 'ev');
-        this.renderItemsList('parte-externa-list', this.itensParteExterna, 'pe');
-        this.renderItemsList('luzes-diant-list', this.itensLuzesDianteiro, 'ld');
-
+        
         this.initializeStatusBoxes();
         this.initializeInputs();
     }
@@ -100,7 +93,7 @@ class InspecaoVeicular {
         if (!container) return;
 
         container.innerHTML = items.map((item, index) => `
-            <div class="item-row">
+            <div class="item-row" data-id="${prefix}-${index}">
                 <div class="item-name">${item}</div>
                 <div class="status-box-container" data-id="${prefix}-${index}"></div>
             </div>
@@ -118,52 +111,92 @@ class InspecaoVeicular {
     createStatusBox(container, id) {
         const statusBox = document.createElement('div');
         statusBox.className = 'status-box';
-
+        
         this.colors.forEach((color, index) => {
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'status-button';
             button.style.backgroundColor = color;
-
-            if (this.formData[id] === index) {
-                button.classList.add('active');
+            
+            // Inicializar como não marcado
+            if (!this.formData[id]) {
+                this.formData[id] = [];
+            }
+            
+            const isChecked = this.formData[id].includes(index);
+            
+            if (isChecked) {
+                button.classList.add('checked');
+                button.style.opacity = '1';
                 button.style.borderWidth = '2px';
             } else {
                 button.style.opacity = '0.3';
                 button.style.borderWidth = '1px';
             }
-
+            
             button.addEventListener('click', () => {
-                this.setStatusValue(id, index);
+                this.toggleStatusValue(id, index);
                 this.updateStatusBox(container, id);
+                this.updateItemRowStyle(id);
             });
-
+            
             statusBox.appendChild(button);
         });
-
+        
         container.appendChild(statusBox);
+        this.updateItemRowStyle(id); // Aplicar estilo inicial
+    }
+
+    toggleStatusValue(id, value) {
+        if (!this.formData[id]) {
+            this.formData[id] = [];
+        }
+        
+        const index = this.formData[id].indexOf(value);
+        if (index > -1) {
+            // Remove se já estiver marcado
+            this.formData[id].splice(index, 1);
+        } else {
+            // Adiciona se não estiver marcado
+            this.formData[id].push(value);
+        }
+        
+        console.log('Form data updated:', this.formData);
     }
 
     updateStatusBox(container, id) {
         const buttons = container.querySelectorAll('.status-button');
-        const currentValue = this.formData[id];
-
+        const checkedValues = this.formData[id] || [];
+        
         buttons.forEach((button, index) => {
-            if (currentValue === index) {
-                button.classList.add('active');
-                button.style.borderWidth = '2px';
+            const isChecked = checkedValues.includes(index);
+            
+            if (isChecked) {
+                button.classList.add('checked');
                 button.style.opacity = '1';
+                button.style.borderWidth = '2px';
             } else {
-                button.classList.remove('active');
-                button.style.borderWidth = '1px';
+                button.classList.remove('checked');
                 button.style.opacity = '0.3';
+                button.style.borderWidth = '1px';
             }
         });
     }
 
-    setStatusValue(id, value) {
-        this.formData[id] = value;
-        console.log('Form data updated:', this.formData);
+    updateItemRowStyle(id) {
+        const itemRow = document.querySelector(`.item-row[data-id="${id}"]`);
+        const checkedValues = this.formData[id] || [];
+        
+        if (itemRow) {
+            // Verifica se todos os 4 quadradinhos estão marcados
+            const allChecked = checkedValues.length === 4;
+            
+            if (allChecked) {
+                itemRow.classList.add('all-checked');
+            } else {
+                itemRow.classList.remove('all-checked');
+            }
+        }
     }
 
     initializeInputs() {
