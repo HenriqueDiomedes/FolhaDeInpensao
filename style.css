@@ -65,7 +65,7 @@ body {
 }
 
 .status-item.ok {
-    background-color: #16a34a;
+    background-color: #047520;
     color: white;
 }
 
@@ -219,183 +219,56 @@ body {
     flex-shrink: 0;
 }
 
-/* Status Box */
-.status-box {
+/* =========================================== */
+/* SISTEMA 1: QUADRADINHOS DAS LISTAS (múltipla seleção) */
+/* =========================================== */
+
+/* Container dos quadradinhos das listas */
+.items-list .status-box {
     display: flex;
     gap: 2px;
 }
 
-.status-button {
+/* Botões individuais das listas */
+.items-list .status-button {
     width: 16px;
     height: 16px;
     border: 1px solid #4b5563;
     cursor: pointer;
     transition: all 0.2s;
-}
-
-.status-button.active {
-    border-width: 2px;
-    opacity: 1;
-}
-
-.status-button:not(.active) {
     opacity: 0.3;
-}
-
-/* Tire Calibration */
-.tire-calibration {
-    padding: 8px;
-}
-
-.tire-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-
-.tire-single {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.tire-input-group {
-    flex: 1;
-}
-
-.tire-label {
-    font-size: 9px;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-.tire-input {
-    width: 100%;
-    height: 28px;
-    border: 1px solid #9ca3af;
-    padding: 4px;
-    font-size: 12px;
-}
-
-.tire-unit {
-    font-size: 8px;
-    color: #6b7280;
-    margin-top: 2px;
-}
-
-/* Brakes Section */
-.brakes-section {
-    padding: 8px;
-}
-
-.brake-group {
-    margin-bottom: 12px;
-}
-
-.brake-wheel {
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.wheel-svg {
-    width: 64px;
-    height: 64px;
-}
-
-.brake-title {
-    font-size: 9px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.brake-inputs {
-    display: flex;
-    gap: 8px;
-}
-
-.brake-input-group {
-    flex: 1;
-}
-
-.brake-label {
-    font-size: 8px;
-    margin-bottom: 4px;
-}
-
-.brake-input-with-status {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.brake-input {
-    width: 100%;
-    height: 24px;
-    border: 1px solid #9ca3af;
-    padding: 4px;
-    font-size: 12px;
-}
-
-.brake-type {
-    font-size: 8px;
-    margin-top: 4px;
-}
-
-.brake-drums {
-    border-top: 1px solid #e5e7eb;
-    padding-top: 8px;
-}
-
-.drums-title {
-    font-size: 9px;
-    margin-bottom: 4px;
-}
-
-.drums-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 8px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .three-columns-layout {
-        flex-direction: column;
-    }
-
-    .status-legend {
-        flex-wrap: wrap;
-    }
-
-    .status-item {
-        flex: 1 0 45%;
-        margin-bottom: 4px;
-    }
-
-    .service-types-container {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .service-options-main {
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-    }
-
-    .item-row {
-        flex-direction: row;
-        /* Volta ao normal em mobile se necessário */
-    }
-}
-
-/* Estilos para os quadradinhos marcados */
-.status-button.checked {
     position: relative;
 }
 
-.status-button.checked::after {
+/* Cores mais vivas para os status boxes das listas */
+.items-list .status-button:nth-child(1) {
+    background-color: #00f359ff !important;
+}
+
+.items-list .status-button:nth-child(2) {
+    background-color: #ffb700ff !important;
+}
+
+.items-list .status-button:nth-child(3) {
+    background-color: #f70d0dff !important;
+}
+
+.items-list .status-button:nth-child(4) {
+    background-color: #d2d7dfff !important;
+}
+
+.items-list .status-button.checked {
+    opacity: 1 !important;
+    border-width: 2px;
+    transform: scale(1.1);
+}
+
+.items-list .status-button:hover {
+    opacity: 0.8;
+}
+
+/* Checkmark para quadradinhos das listas */
+.items-list .status-button.checked::after {
     content: '✓';
     position: absolute;
     top: 50%;
@@ -404,9 +277,317 @@ body {
     color: black;
     font-size: 10px;
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* Estilo para quando todos os quadradinhos estão marcados */
+/* Cores específicas para o checkmark para melhor contraste */
+.items-list .status-button:nth-child(1).checked::after {
+    color: black;
+}
+
+.items-list .status-button:nth-child(2).checked::after {
+    color: black;
+}
+
+.items-list .status-button:nth-child(3).checked::after {
+    color: white;
+}
+
+.items-list .status-button:nth-child(4).checked::after {
+    color: black;
+}
+
+/* =========================================== */
+/* SISTEMA 2: QUADRADINHOS DOS FREIOS (múltipla seleção) */
+/* =========================================== */
+
+/* Estilos para a nova seção de freios */
+.brakes-content {
+    padding: 8px;
+}
+
+/* Categoria de freio */
+.brake-category {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.brake-category:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Ícone do freio */
+.brake-icon {
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.brake-svg {
+    width: 48px;
+    height: 48px;
+}
+
+.brake-name {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.brake-warning {
+    font-size: 20px;
+}
+
+/* Detalhes do freio */
+.brake-details {
+    flex: 1;
+}
+
+.found-label {
+    text-align: right;
+    font-size: 8px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* Linha do freio */
+.brake-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.brake-row:last-child {
+    margin-bottom: 0;
+}
+
+.brake-label {
+    font-size: 8px;
+    font-weight: bold;
+    width: 112px;
+}
+
+.brake-sub {
+    font-weight: normal;
+    font-size: 7px;
+}
+
+/* Grupo de input */
+.brake-input-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.brake-input {
+    height: 20px;
+    width: 56px;
+    text-align: center;
+    font-size: 10px;
+    border: 1px solid #9ca3af;
+    padding: 0 4px;
+}
+
+.brake-unit {
+    font-size: 7px;
+    color: #6b7280;
+    width: 24px;
+}
+
+/* Status boxes para freios (múltipla seleção) */
+.brakes-content .status-boxes {
+    display: flex;
+    gap: 2px;
+}
+
+.brakes-content .status-box {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #4b5563;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0.3;
+    position: relative;
+}
+
+/* Cores dos quadradinhos dos freios */
+.brakes-content .status-box:nth-child(1) {
+    background-color: #00f359ff !important;
+}
+
+.brakes-content .status-box:nth-child(2) {
+    background-color: #ffb700ff !important;
+}
+
+.brakes-content .status-box:nth-child(3) {
+    background-color: #f70d0dff !important;
+}
+
+.brakes-content .status-box:nth-child(4) {
+    background-color: #d2d7dfff !important;
+}
+
+.brakes-content .status-box.checked {
+    opacity: 1 !important;
+    border-width: 2px;
+    transform: scale(1.1);
+}
+
+.brakes-content .status-box:hover {
+    opacity: 0.8;
+}
+
+/* Checkmark para quadradinhos dos freios */
+.brakes-content .status-box.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Cores específicas para o checkmark dos freios */
+.brakes-content .status-box:nth-child(1).checked::after {
+    color: black;
+}
+
+.brakes-content .status-box:nth-child(2).checked::after {
+    color: black;
+}
+
+.brakes-content .status-box:nth-child(3).checked::after {
+    color: white;
+}
+
+.brakes-content .status-box:nth-child(4).checked::after {
+    color: black;
+}
+
+/* Ícone do header de freios */
+.brakes-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* =========================================== */
+/* SEÇÃO CALIBRAGEM DE PNEUS (NOVA VERSÃO) */
+/* =========================================== */
+
+.section.tire-calibration {
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.tire-header {
+    background-color: #374151;
+    color: white;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tire-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.tire-content {
+    background-color: #f8fafc;
+    padding: 12px;
+}
+
+.calibrated-label {
+    text-align: right;
+    font-size: 9px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #374151;
+}
+
+/* Linhas dos pneus */
+.tire-rows {
+    margin-bottom: 0;
+}
+
+.tire-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tire-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.tire-label {
+    font-size: 9px;
+    font-weight: bold;
+    color: #1f2937;
+    width: 120px;
+}
+
+.tire-input-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tire-input {
+    height: 24px;
+    width: 60px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    border: 1px solid #9ca3af;
+    border-radius: 2px;
+    padding: 0 6px;
+    background-color: white;
+}
+
+.tire-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.tire-input::placeholder {
+    color: #9ca3af;
+    font-weight: normal;
+}
+
+.tire-unit {
+    font-size: 8px;
+    color: #6b7280;
+    width: 25px;
+    font-weight: 600;
+}
+
+/* =========================================== */
+/* ESTILOS GERAIS */
+/* =========================================== */
+
+/* Estilo para quando todos os quadradinhos estão marcados (apenas para listas) */
 .item-row.all-checked {
     position: relative;
 }
@@ -438,5 +619,135 @@ body {
     position: relative;
     z-index: 2;
     opacity: 1 !important;
-    /* Mantém as cores visíveis */
+}
+
+/* =========================================== */
+/* RESPONSIVE DESIGN */
+/* =========================================== */
+
+@media (max-width: 768px) {
+    .three-columns-layout {
+        flex-direction: column;
+    }
+
+    .status-legend {
+        flex-wrap: wrap;
+    }
+
+    .status-item {
+        flex: 1 0 45%;
+        margin-bottom: 4px;
+    }
+
+    .service-types-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .service-options-main {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .item-row {
+        flex-direction: row;
+    }
+
+    .brake-category {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .brake-details {
+        width: 100%;
+    }
+
+    .brake-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .brake-input-group {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .tire-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .tire-input-group {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+/* =========================================== */
+/* ESTILOS PARA RISCO NOS QUADRADINHOS - X PRETO */
+/* =========================================== */
+
+/* Estilo de risco para quadradinhos dos freios */
+.brakes-content .status-box.strikethrough {
+    position: relative;
+    opacity: 0.6 !important;
+}
+
+.brakes-content .status-box.strikethrough::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #000000; /* PRETO */
+    transform: translateY(-50%) rotate(-45deg);
+    z-index: 2;
+}
+
+.brakes-content .status-box.strikethrough::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #000000; /* PRETO */
+    transform: translateY(-50%) rotate(45deg);
+    z-index: 2;
+}
+
+/* Quando há risco, remove o checkmark */
+.brakes-content .status-box.strikethrough.checked::after {
+    content: '';
+    background-color: #000000; /* PRETO */
+}
+
+/* Garante que o risco fique acima das cores - TODOS PRETOS */
+.brakes-content .status-box.strikethrough:nth-child(1)::before,
+.brakes-content .status-box.strikethrough:nth-child(1)::after {
+    background-color: #000000; /* PRETO */
+}
+
+.brakes-content .status-box.strikethrough:nth-child(2)::before,
+.brakes-content .status-box.strikethrough:nth-child(2)::after {
+    background-color: #000000; /* PRETO */
+}
+
+.brakes-content .status-box.strikethrough:nth-child(3)::before,
+.brakes-content .status-box.strikethrough:nth-child(3)::after {
+    background-color: #000000; /* PRETO */
+}
+
+.brakes-content .status-box.strikethrough:nth-child(4)::before,
+.brakes-content .status-box.strikethrough:nth-child(4)::after {
+    background-color: #000000; /* PRETO */
+}
+
+/* Opcional: Aumentar um pouco a espessura do X para melhor visibilidade */
+.brakes-content .status-box.strikethrough::before,
+.brakes-content .status-box.strikethrough::after {
+    height: 3px; /* Um pouco mais grosso */
 }

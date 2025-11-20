@@ -1,25 +1,26 @@
 class InspecaoVeicular {
     constructor() {
         this.formData = {};
-        this.colors = ['#22c55e', '#fbbf24', '#ef4444', '#9ca3af'];
-        
+        this.colors = ['#00f359ff', '#ffb700ff', '#f70d0dff', '#d2d7dfff'];
+
         this.itensParteInterna = [
             'Relógio e computador de bordo',
-            'Funcionamento dos controles',
-            'Comandos do painel / limpador / ventilador / desembaçadores',
-            'Ar quente',
+            'Luzes do painel e de cortesia •',
+            'Lavadores e limpadores',
+            'Ventilador / Desembaçadores',
+            'Retrovisor e para-sóis',
             'Buzina',
-            'Trava e coluna de direção',
-            'Ruídos, vibrações ou batidas não-aplicáveis',
-            'A/: condicionado A',
-            'A/c: Automático / A',
+            'Volante e coluna de direção',
+            'Aquecedor elétrico dos bancos(se aplicável)',
+            'Ar-condicionado •',
+            'Rádio / Multimidia • △',
             'Bancos e cintos de segurança',
-            'Vidros e travas elétricas',
-            'Retrovisor interno',
-            'Painel de freio',
-            'Sistema de ar-condicionado',
-            'Filtro de ar da cabine / filtrado',
-            'Substituição de elemento de A/C (acúmulo e obstruções)'
+            'Vidros e trava elétrica',
+            'Freios de estacionamento',
+            'Pedal de freio',
+            'Filtro de ar da bateria hibrido',
+            'Filtro de ar - condicionado',
+            'Kit de troca(medidor e filtro de sucção a cada 72.000 km(motor flex) ⚠ ',
         ];
 
         this.itensFluidos = [
@@ -27,7 +28,7 @@ class InspecaoVeicular {
             'Nível do lavador de para-brisa *',
             'Fluido do sistema de arrefecimento do motor',
             'Nível de fluido de arrefecimento',
-            'Fluido de freios',
+            'Fluido de freios e Embreagem',
             'Óleo equipado com vareta de inspeção',
             'Óleo de transmissão manual',
             'Fluido de direção hidráulica (se aplicável)',
@@ -54,12 +55,13 @@ class InspecaoVeicular {
         ];
 
         this.itensParteExterna = [
-            'Iluminação dianteira e traseira (não-farol) alto e baixo',
-            'Limpador de para-brisa',
-            'Formação de motor jrrador diantil'
+            'Iluminação dianteira e traseira e/ou farol xenon *',
+            'Tampa do combustível',
+            'Formação de motor(motor dissel)'
         ];
 
         this.itensCapoAberto = [
+            'Vazamentos de óleo, água, combustivel e/ou outros',
             'Nível de óleo do motor',
             'Cor e estado do óleo do motor',
             'Fluido de freio',
@@ -83,9 +85,10 @@ class InspecaoVeicular {
         this.renderItemsList('capo-aberto-list', this.itensCapoAberto, 'ca');
         this.renderItemsList('fluidos-list', this.itensFluidos, 'fl');
         this.renderItemsList('embaixo-veiculo-list', this.itensEmbaixoVeiculo, 'ev');
-        
+
         this.initializeStatusBoxes();
         this.initializeInputs();
+        this.initializeBrakesSection();
     }
 
     renderItemsList(containerId, items, prefix) {
@@ -101,7 +104,7 @@ class InspecaoVeicular {
     }
 
     initializeStatusBoxes() {
-        const containers = document.querySelectorAll('.status-box-container');
+        const containers = document.querySelectorAll('.items-list .status-box-container');
         containers.forEach(container => {
             const id = container.getAttribute('data-id');
             this.createStatusBox(container, id);
@@ -111,20 +114,19 @@ class InspecaoVeicular {
     createStatusBox(container, id) {
         const statusBox = document.createElement('div');
         statusBox.className = 'status-box';
-        
+
         this.colors.forEach((color, index) => {
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'status-button';
             button.style.backgroundColor = color;
-            
-            // Inicializar como não marcado
+
             if (!this.formData[id]) {
                 this.formData[id] = [];
             }
-            
+
             const isChecked = this.formData[id].includes(index);
-            
+
             if (isChecked) {
                 button.classList.add('checked');
                 button.style.opacity = '1';
@@ -133,44 +135,42 @@ class InspecaoVeicular {
                 button.style.opacity = '0.3';
                 button.style.borderWidth = '1px';
             }
-            
+
             button.addEventListener('click', () => {
                 this.toggleStatusValue(id, index);
                 this.updateStatusBox(container, id);
                 this.updateItemRowStyle(id);
             });
-            
+
             statusBox.appendChild(button);
         });
-        
+
         container.appendChild(statusBox);
-        this.updateItemRowStyle(id); // Aplicar estilo inicial
+        this.updateItemRowStyle(id);
     }
 
     toggleStatusValue(id, value) {
         if (!this.formData[id]) {
             this.formData[id] = [];
         }
-        
+
         const index = this.formData[id].indexOf(value);
         if (index > -1) {
-            // Remove se já estiver marcado
             this.formData[id].splice(index, 1);
         } else {
-            // Adiciona se não estiver marcado
             this.formData[id].push(value);
         }
-        
+
         console.log('Form data updated:', this.formData);
     }
 
     updateStatusBox(container, id) {
         const buttons = container.querySelectorAll('.status-button');
         const checkedValues = this.formData[id] || [];
-        
+
         buttons.forEach((button, index) => {
             const isChecked = checkedValues.includes(index);
-            
+
             if (isChecked) {
                 button.classList.add('checked');
                 button.style.opacity = '1';
@@ -186,11 +186,9 @@ class InspecaoVeicular {
     updateItemRowStyle(id) {
         const itemRow = document.querySelector(`.item-row[data-id="${id}"]`);
         const checkedValues = this.formData[id] || [];
-        
+
         if (itemRow) {
-            // Verifica se todos os 4 quadradinhos estão marcados
             const allChecked = checkedValues.length === 4;
-            
             if (allChecked) {
                 itemRow.classList.add('all-checked');
             } else {
@@ -212,18 +210,6 @@ class InspecaoVeicular {
             }
         });
 
-        // Inputs de freios
-        const brakeInputs = ['pneu-diant-esq', 'pneu-diant-dir', 'pneu-tras-esq', 'pneu-tras-dir'];
-        brakeInputs.forEach(id => {
-            const input = document.getElementById(id);
-            if (input) {
-                input.addEventListener('input', (e) => {
-                    this.formData[id] = e.target.value;
-                    console.log('Form data updated:', this.formData);
-                });
-            }
-        });
-
         // Checkboxes de tipo de serviço
         const checkboxes = document.querySelectorAll('.service-checkbox');
         checkboxes.forEach((checkbox, index) => {
@@ -232,6 +218,139 @@ class InspecaoVeicular {
                 this.formData[serviceTypes[index]] = e.target.checked;
                 console.log('Form data updated:', this.formData);
             });
+        });
+    }
+
+    // MÉTODO ATUALIZADO: Inicialização da seção de freios
+    initializeBrakesSection() {
+        // Configurar event listeners para inputs de freios
+        document.querySelectorAll('.brake-input').forEach(input => {
+            const key = input.getAttribute('data-key');
+            
+            // Carregar valor salvo
+            if (this.formData[key]) {
+                input.value = this.formData[key];
+            }
+            
+            // Salvar quando o valor mudar
+            input.addEventListener('input', (e) => {
+                const value = e.target.value;
+                this.formData[key] = value;
+                
+                // Verificar se deve aplicar risco nos quadradinhos
+                this.checkAndApplyStrikeThrough(key, value);
+                
+                console.log('Form data updated:', this.formData);
+            });
+        });
+        
+        // Configurar event listeners para status boxes de freios
+        document.querySelectorAll('.brakes-content .status-boxes').forEach(container => {
+            const key = container.getAttribute('data-key');
+            const boxes = container.querySelectorAll('.status-box');
+            
+            // Inicializar array se não existir
+            if (!this.formData[key]) {
+                this.formData[key] = [];
+            }
+            
+            // Carregar estado salvo
+            const checkedValues = this.formData[key] || [];
+            boxes.forEach((box, index) => {
+                const isChecked = checkedValues.includes(index);
+                
+                if (isChecked) {
+                    box.classList.add('checked');
+                    box.style.opacity = '1';
+                    box.style.borderWidth = '2px';
+                } else {
+                    box.classList.remove('checked');
+                    box.style.opacity = '0.3';
+                    box.style.borderWidth = '1px';
+                }
+            });
+            
+            // Configurar clique para múltipla seleção
+            boxes.forEach((box, index) => {
+                box.addEventListener('click', () => {
+                    this.toggleBrakeStatusValue(key, index);
+                    this.updateBrakeStatusBox(container, key);
+                });
+            });
+        });
+    }
+
+    // NOVO MÉTODO: Verificar e aplicar risco nos quadradinhos
+    checkAndApplyStrikeThrough(inputKey, value) {
+        // Encontrar o container de status boxes correspondente
+        const statusKey = inputKey + '-status';
+        const container = document.querySelector(`.status-boxes[data-key="${statusKey}"]`);
+        
+        if (!container) return;
+        
+        const boxes = container.querySelectorAll('.status-box');
+        
+        // Verificar se o valor é '-', '_' ou '*'
+        const shouldStrike = value === '-' || value === '_' || value === '*';
+        
+        // Aplicar ou remover a classe de risco
+        boxes.forEach(box => {
+            if (shouldStrike) {
+                box.classList.add('strikethrough');
+            } else {
+                box.classList.remove('strikethrough');
+            }
+        });
+        
+        // Se aplicou risco, limpar qualquer seleção existente
+        if (shouldStrike) {
+            this.formData[statusKey] = [];
+            this.updateBrakeStatusBox(container, statusKey);
+        }
+    }
+
+    // MÉTODO: Toggle para valores dos freios
+    toggleBrakeStatusValue(key, value) {
+        if (!this.formData[key]) {
+            this.formData[key] = [];
+        }
+        
+        // Verificar se há risco aplicado (não permite marcar se houver risco)
+        const inputKey = key.replace('-status', '');
+        const inputValue = this.formData[inputKey];
+        const hasStrike = inputValue === '-' || inputValue === '_' || inputValue === '*';
+        
+        if (hasStrike) {
+            return; // Não permite marcar se há risco
+        }
+        
+        const index = this.formData[key].indexOf(value);
+        if (index > -1) {
+            this.formData[key].splice(index, 1);
+        } else {
+            this.formData[key].push(value);
+        }
+        
+        console.log('Form data updated:', this.formData);
+    }
+
+    // MÉTODO: Atualizar visual dos quadradinhos dos freios
+    updateBrakeStatusBox(container, key) {
+        const boxes = container.querySelectorAll('.status-box');
+        const checkedValues = this.formData[key] || [];
+        
+        boxes.forEach((box, index) => {
+            const isChecked = checkedValues.includes(index);
+            
+            if (isChecked) {
+                box.classList.add('checked');
+                box.style.opacity = '1';
+                box.style.borderWidth = '2px';
+            } else {
+                box.classList.remove('checked');
+                box.style.opacity = '0.3';
+                box.style.borderWidth = '1px';
+            }
         });
     }
 }

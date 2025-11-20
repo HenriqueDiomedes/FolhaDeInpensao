@@ -43,7 +43,7 @@
                         </label>
                         <label class="service-option-full">
                             <input type="checkbox" class="service-checkbox">
-                            <span>Boas-vindas (itens marcados com *)</span>
+                            <span>Boas-vindas (itens marcados com •)</span>
                         </label>
                         <label class="service-option-full">
                             <input type="checkbox" class="service-checkbox">
@@ -69,7 +69,6 @@
                     <!-- 1 - PARTE INTERNA -->
                     <div class="form-section">
                         <div class="section-header">
-                            <div class="square-icon"></div>
                             PARTE INTERNA
                         </div>
                         <div class="items-list" id="parte-interna-list">
@@ -123,120 +122,394 @@
 
                 <!-- Coluna 3 -->
                 <div class="column">
-                    <!-- 6 - CALIBRAGEM DOS PNEUS -->
-                    <div class="form-section">
-                        <div class="section-header gray">
-                            CALIBRAGEM DOS PNEUS *
+                    <div class="section tire-calibration">
+                        <div class="tire-header">
+                            <svg class="tire-icon" width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none" />
+                                <circle cx="12" cy="12" r="6" fill="white" />
+                            </svg>
+                            CALIBRAGEM DOS PNEUS •
                         </div>
-                        <div class="tire-calibration">
-                            <div class="tire-row">
-                                <div class="tire-input-group">
-                                    <div class="tire-label">DIANTEIRO ESQUERDO</div>
-                                    <input type="text" placeholder="32" class="tire-input" id="dianteiro-esq">
-                                    <div class="tire-unit">psi</div>
+
+                        <div class="tire-content">
+                            <div class="calibrated-label">CALIBRADO</div>
+
+                            <div class="tire-rows">
+                                <!-- Dianteiro Esquerdo -->
+                                <div class="tire-row">
+                                    <span class="tire-label">DIANTEIRO ESQUERDO</span>
+                                    <div class="tire-input-group">
+                                        <input type="text" class="tire-input" data-key="dianteiroEsq" placeholder="0">
+                                        <span class="tire-unit">psi</span>
+                                    </div>
                                 </div>
-                                <div class="tire-input-group">
-                                    <div class="tire-label">DIANTEIRO DIREITO</div>
-                                    <input type="text" placeholder="32" class="tire-input" id="dianteiro-dir">
-                                    <div class="tire-unit">psi</div>
+
+                                <!-- Dianteiro Direito -->
+                                <div class="tire-row">
+                                    <span class="tire-label">DIANTEIRO DIREITO</span>
+                                    <div class="tire-input-group">
+                                        <input type="text" class="tire-input" data-key="dianteiroDir" placeholder="0">
+                                        <span class="tire-unit">psi</span>
+                                    </div>
+                                </div>
+
+                                <!-- Traseiro Esquerdo -->
+                                <div class="tire-row">
+                                    <span class="tire-label">TRASEIRO ESQUERDO</span>
+                                    <div class="tire-input-group">
+                                        <input type="text" class="tire-input" data-key="traseiroEsq" placeholder="0">
+                                        <span class="tire-unit">psi</span>
+                                    </div>
+                                </div>
+
+                                <!-- Traseiro Direito -->
+                                <div class="tire-row">
+                                    <span class="tire-label">TRASEIRO DIREITO</span>
+                                    <div class="tire-input-group">
+                                        <input type="text" class="tire-input" data-key="traseiroDir" placeholder="0">
+                                        <span class="tire-unit">psi</span>
+                                    </div>
+                                </div>
+
+                                <!-- Estepe -->
+                                <div class="tire-row">
+                                    <span class="tire-label">ESTEPE</span>
+                                    <div class="tire-input-group">
+                                        <input type="text" class="tire-input" data-key="estepe" placeholder="0">
+                                        <span class="tire-unit">psi</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="tire-row">
-                                <div class="tire-input-group">
-                                    <div class="tire-label">TRASEIRO ESQUERDO</div>
-                                    <input type="text" placeholder="32" class="tire-input" id="traseiro-esq">
-                                    <div class="tire-unit">psi</div>
-                                </div>
-                                <div class="tire-input-group">
-                                    <div class="tire-label">TRASEIRO DIREITO</div>
-                                    <input type="text" placeholder="32" class="tire-input" id="traseiro-dir">
-                                    <div class="tire-unit">psi</div>
-                                </div>
-                            </div>
-                            <div class="tire-single">
-                                <div class="tire-input-group">
-                                    <div class="tire-label">ESTEPE</div>
-                                    <input type="text" placeholder="35" class="tire-input" id="estepe">
-                                    <div class="tire-unit">psi</div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
-                    <!-- 7 - FREIOS -->
+                    <!-- 7 - FREIOS (NOVA VERSÃO) -->
                     <div class="form-section">
                         <div class="section-header gray">
+                            <svg class="brakes-icon" width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none" />
+                                <circle cx="12" cy="12" r="3" fill="white" />
+                            </svg>
                             FREIOS
                         </div>
-                        <div class="brakes-section">
-                            <!-- Freios Dianteiro -->
-                            <div class="brake-group">
-                                <div class="brake-wheel">
-                                    <svg class="wheel-svg" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="35" fill="none" stroke="#374151" stroke-width="4" />
-                                        <circle cx="50" cy="50" r="25" fill="none" stroke="#374151" stroke-width="8" />
-                                        <circle cx="50" cy="50" r="8" fill="#374151" />
-                                        <path d="M 50 15 L 50 35 M 50 65 L 50 85 M 15 50 L 35 50 M 65 50 L 85 50"
-                                            stroke="#374151" stroke-width="3" />
+
+                        <div class="brakes-content">
+                            <!-- PASTILHAS -->
+                            <div class="brake-category">
+                                <div class="brake-icon">
+                                    <svg class="brake-svg" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="30" fill="none" stroke="#374151" stroke-width="3" />
+                                        <circle cx="50" cy="50" r="20" fill="none" stroke="#374151" stroke-width="6" />
+                                        <circle cx="50" cy="50" r="6" fill="#374151" />
+                                        <line x1="30" y1="30" x2="40" y2="40" stroke="#374151" stroke-width="2" />
+                                        <line x1="70" y1="30" x2="60" y2="40" stroke="#374151" stroke-width="2" />
+                                        <line x1="30" y1="70" x2="40" y2="60" stroke="#374151" stroke-width="2" />
+                                        <line x1="70" y1="70" x2="60" y2="60" stroke="#374151" stroke-width="2" />
                                     </svg>
+                                    <div class="brake-name">PASTILHAS</div>
+                                    <div class="brake-warning">⚠</div>
                                 </div>
-                                <div class="brake-title">ENCHOVIADO DIANTEIRO</div>
-                                <div class="brake-inputs">
-                                    <div class="brake-input-group">
-                                        <div class="brake-label">TRAT. ESQUERDA</div>
-                                        <div class="brake-input-with-status">
-                                            <input type="text" class="brake-input" id="pneu-diant-esq">
-                                            <div class="status-box-container" data-id="pneu-de"></div>
+
+                                <div class="brake-details">
+                                    <div class="found-label">ENCONTRADO</div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            DIANT. ESQUERDA:
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="pastilha-de">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="pastilha-de-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="brake-input-group">
-                                        <div class="brake-label">TRAT. DIREITA</div>
-                                        <div class="brake-input-with-status">
-                                            <input type="text" class="brake-input" id="pneu-diant-dir">
-                                            <div class="status-box-container" data-id="pneu-dd"></div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            DIANT. DIREITA:
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="pastilha-dd">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="pastilha-dd-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. ESQUERDA: <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="pastilha-te">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="pastilha-te-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. DIREITA: <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="pastilha-td">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="pastilha-td-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="brake-type">FREIO: Disco dianteiro</div>
                             </div>
 
-                            <!-- Freios Traseiro -->
-                            <div class="brake-group">
-                                <div class="brake-wheel">
-                                    <svg class="wheel-svg" viewBox="0 0 100 100">
+                            <!-- DISCOS -->
+                            <div class="brake-category">
+                                <div class="brake-icon">
+                                    <svg class="brake-svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="35" fill="none" stroke="#374151" stroke-width="4" />
-                                        <circle cx="50" cy="50" r="25" fill="none" stroke="#374151" stroke-width="8" />
                                         <circle cx="50" cy="50" r="8" fill="#374151" />
-                                        <path d="M 50 15 L 50 35 M 50 65 L 50 85 M 15 50 L 35 50 M 65 50 L 85 50"
-                                            stroke="#374151" stroke-width="3" />
+                                        <!-- Linhas radiais -->
+                                        <line x1="50" y1="20" x2="50" y2="35" stroke="#374151" stroke-width="2" />
+                                        <line x1="65" y1="35" x2="80" y2="35" stroke="#374151" stroke-width="2" />
+                                        <line x1="65" y1="65" x2="80" y2="65" stroke="#374151" stroke-width="2" />
+                                        <line x1="50" y1="65" x2="50" y2="80" stroke="#374151" stroke-width="2" />
+                                        <line x1="20" y1="65" x2="35" y2="65" stroke="#374151" stroke-width="2" />
+                                        <line x1="20" y1="35" x2="35" y2="35" stroke="#374151" stroke-width="2" />
                                     </svg>
+                                    <div class="brake-name">DISCOS</div>
+                                    <div class="brake-warning">⚠</div>
                                 </div>
-                                <div class="brake-title">ENCHOVIADO TRASEIRO</div>
-                                <div class="brake-inputs">
-                                    <div class="brake-input-group">
-                                        <div class="brake-label">TRAT. ESQUERDA</div>
-                                        <div class="brake-input-with-status">
-                                            <input type="text" class="brake-input" id="pneu-tras-esq">
-                                            <div class="status-box-container" data-id="pneu-te"></div>
+
+                                <div class="brake-details">
+                                    <div class="found-label">ENCONTRADO</div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            DIANT. ESQUERDO:
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="disco-de">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="disco-de-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="brake-input-group">
-                                        <div class="brake-label">TRAT. DIREITA</div>
-                                        <div class="brake-input-with-status">
-                                            <input type="text" class="brake-input" id="pneu-tras-dir">
-                                            <div class="status-box-container" data-id="pneu-td"></div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            DIANT. DIREITO:
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="disco-dd">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="disco-dd-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. ESQUERDO: <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="disco-te">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="disco-te-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. DIREITO: <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="disco-td">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="disco-td-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="brake-type">FREIO: Disco traseiro</div>
                             </div>
 
-                            <!-- Tambores -->
-                            <div class="brake-drums">
-                                <div class="drums-title">TAMBORES (se aplicável)</div>
-                                <div class="drums-item">
-                                    <span>Freio de mão / estacionamento</span>
-                                    <div class="status-box-container" data-id="freio-mao"></div>
+                            <!-- LONAS -->
+                            <div class="brake-category">
+                                <div class="brake-icon">
+                                    <svg class="brake-svg" viewBox="0 0 100 100">
+                                        <ellipse cx="50" cy="50" rx="30" ry="35" fill="none" stroke="#374151"
+                                            stroke-width="4" />
+                                        <ellipse cx="50" cy="50" rx="15" ry="18" fill="none" stroke="#374151"
+                                            stroke-width="3" />
+                                        <rect x="35" y="25" width="30" height="8" fill="#374151" rx="2" />
+                                        <rect x="35" y="67" width="30" height="8" fill="#374151" rx="2" />
+                                    </svg>
+                                    <div class="brake-name">LONAS</div>
+                                    <div class="brake-warning">⚠</div>
+                                </div>
+
+                                <div class="brake-details">
+                                    <div class="found-label">ENCONTRADO</div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. ESQUERDA: <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="lona-te">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="lona-te-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. DIREITA: <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <input type="text" class="brake-input" data-key="lona-td">
+                                            <span class="brake-unit">mm</span>
+                                            <div class="status-boxes" data-key="lona-td-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- TAMBORES -->
+                            <div class="brake-category">
+                                <div class="brake-icon">
+                                    <svg class="brake-svg" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="32" fill="none" stroke="#374151" stroke-width="5" />
+                                        <circle cx="50" cy="50" r="18" fill="none" stroke="#374151" stroke-width="3" />
+                                        <circle cx="50" cy="50" r="8" fill="#374151" />
+                                        <circle cx="30" cy="30" r="3" fill="#374151" />
+                                        <circle cx="70" cy="30" r="3" fill="#374151" />
+                                        <circle cx="30" cy="70" r="3" fill="#374151" />
+                                        <circle cx="70" cy="70" r="3" fill="#374151" />
+                                    </svg>
+                                    <div class="brake-name">TAMBORES</div>
+                                </div>
+
+                                <div class="brake-details">
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. ESQUERDO <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <div class="status-boxes" data-key="tambor-te-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="brake-row">
+                                        <div class="brake-label">
+                                            TRAS. DIREITO <span class="brake-sub">(se aplicável)</span>
+                                        </div>
+                                        <div class="brake-input-group">
+                                            <div class="status-boxes" data-key="tambor-td-status">
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #10b981"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #f59e0b"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #ef4444"></button>
+                                                <button type="button" class="status-box"
+                                                    style="background-color: #6b7280"></button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibragem dos Pneus - Inspeção Veicular</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <!-- CALIBRAGEM DOS PNEUS -->
+    <div class="section tire-calibration">
+        <div class="tire-header">
+            <svg class="tire-icon" width="16" height="16" viewBox="0 0 24 24" fill="white">
+                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="12" r="6" fill="white"/>
+            </svg>
+            CALIBRAGEM DOS PNEUS *
+        </div>
+        
+        <div class="tire-content">
+            <div class="calibrated-label">CALIBRADO</div>
+            
+            <div class="tire-rows">
+                <!-- Dianteiro Esquerdo -->
+                <div class="tire-row">
+                    <span class="tire-label">DIANTEIRO ESQUERDO</span>
+                    <div class="tire-input-group">
+                        <input type="text" class="tire-input" data-key="dianteiroEsq" placeholder="0">
+                        <span class="tire-unit">psi</span>
+                    </div>
+                </div>
+                
+                <!-- Dianteiro Direito -->
+                <div class="tire-row">
+                    <span class="tire-label">DIANTEIRO DIREITO</span>
+                    <div class="tire-input-group">
+                        <input type="text" class="tire-input" data-key="dianteiroDir" placeholder="0">
+                        <span class="tire-unit">psi</span>
+                    </div>
+                </div>
+                
+                <!-- Traseiro Esquerdo -->
+                <div class="tire-row">
+                    <span class="tire-label">TRASEIRO ESQUERDO</span>
+                    <div class="tire-input-group">
+                        <input type="text" class="tire-input" data-key="traseiroEsq" placeholder="0">
+                        <span class="tire-unit">psi</span>
+                    </div>
+                </div>
+                
+                <!-- Traseiro Direito -->
+                <div class="tire-row">
+                    <span class="tire-label">TRASEIRO DIREITO</span>
+                    <div class="tire-input-group">
+                        <input type="text" class="tire-input" data-key="traseiroDir" placeholder="0">
+                        <span class="tire-unit">psi</span>
+                    </div>
+                </div>
+                
+                <!-- Estepe -->
+                <div class="tire-row">
+                    <span class="tire-label">ESTEPE</span>
+                    <div class="tire-input-group">
+                        <input type="text" class="tire-input" data-key="estepe" placeholder="0">
+                        <span class="tire-unit">psi</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="calibragem-pneus.js"></script>
+</body>
+</html>
