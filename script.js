@@ -55,25 +55,30 @@ class InspecaoVeicular {
         ];
 
         this.itensParteExterna = [
-            'Iluminação dianteira e traseira e/ou farol xenon *',
+            'Iluminação dianteira e traseira e/ou farol xenon •⚠',
             'Tampa do combustível',
-            'Formação de motor(motor dissel)'
+            'Fumaça do motor(motor dissel)'
         ];
 
         this.itensCapoAberto = [
-            'Vazamentos de óleo, água, combustivel e/ou outros',
-            'Nível de óleo do motor',
-            'Cor e estado do óleo do motor',
-            'Fluido de freio',
-            'Fluido de direção hidráulica',
-            'Líquido de arrefecimento',
-            'Água do radiador',
-            'Bateria e bornes',
-            'Correia do alternador',
-            'Correia de comando (se aplicável)',
-            'Filtro de ar do motor',
-            'Vazamentos em geral',
-            'Limpeza do compartimento do motor'
+            'Vazamentos de óleo, água, combustivel e/ou outros fluidos',
+            'Correias de acionamento',
+            'Folga das válvulas(se aplicável)',
+            'Velas de ignição(conforme ano/modelo do veiculo)',
+            'Condições da bateria △',
+            `<span style="display: inline-flex; align-items: center; gap: 4px;">
+        Tensão da bateria Encontrada:
+        <input type="text" 
+               class="battery-voltage-input" 
+               placeholder="" 
+               maxlength="4"
+               style="height: 14px; width: 40px; font-size: 7px; text-align: center; border: 1px solid #9ca3af; padding: 0 2px;">
+        •
+    </span>`,
+            'Cânister de carvão ativado (se aplicáve) ⚠',
+            'Filtro de ar',
+            'Filtro de combustivel(motor dissel ou flex)',
+            'Filtro de combustivel (2º filtro) (se aplicável)',
         ];
 
         this.init();
@@ -162,7 +167,7 @@ class InspecaoVeicular {
         }
 
         console.log('Form data updated:', this.formData);
-        
+
         // Verificar se todos estão marcados para aplicar X
         this.checkAllCheckedForStrike(id);
     }
@@ -247,39 +252,39 @@ class InspecaoVeicular {
         // Configurar event listeners para inputs de freios
         document.querySelectorAll('.brake-input').forEach(input => {
             const key = input.getAttribute('data-key');
-            
+
             // Carregar valor salvo
             if (this.formData[key]) {
                 input.value = this.formData[key];
             }
-            
+
             // Salvar quando o valor mudar
             input.addEventListener('input', (e) => {
                 const value = e.target.value;
                 this.formData[key] = value;
-                
+
                 // Verificar se deve aplicar risco nos quadradinhos
                 this.checkAndApplyStrikeThrough(key, value);
-                
+
                 console.log('Form data updated:', this.formData);
             });
         });
-        
+
         // Configurar event listeners para status boxes de freios
         document.querySelectorAll('.brakes-content .status-boxes').forEach(container => {
             const key = container.getAttribute('data-key');
             const boxes = container.querySelectorAll('.status-box');
-            
+
             // Inicializar array se não existir
             if (!this.formData[key]) {
                 this.formData[key] = [];
             }
-            
+
             // Carregar estado salvo
             const checkedValues = this.formData[key] || [];
             boxes.forEach((box, index) => {
                 const isChecked = checkedValues.includes(index);
-                
+
                 if (isChecked) {
                     box.classList.add('checked');
                     box.style.opacity = '1';
@@ -290,7 +295,7 @@ class InspecaoVeicular {
                     box.style.borderWidth = '1px';
                 }
             });
-            
+
             // Configurar clique para múltipla seleção
             boxes.forEach((box, index) => {
                 box.addEventListener('click', () => {
@@ -306,14 +311,14 @@ class InspecaoVeicular {
         // Encontrar o container de status boxes correspondente
         const statusKey = inputKey + '-status';
         const container = document.querySelector(`.status-boxes[data-key="${statusKey}"]`);
-        
+
         if (!container) return;
-        
+
         const boxes = container.querySelectorAll('.status-box');
-        
+
         // Verificar se o valor é '-', '_' ou '*'
         const shouldStrike = value === '-' || value === '_' || value === '*';
-        
+
         // Aplicar ou remover a classe de risco
         boxes.forEach(box => {
             if (shouldStrike) {
@@ -322,7 +327,7 @@ class InspecaoVeicular {
                 box.classList.remove('strikethrough');
             }
         });
-        
+
         // Se aplicou risco, limpar qualquer seleção existente
         if (shouldStrike) {
             this.formData[statusKey] = [];
@@ -335,25 +340,25 @@ class InspecaoVeicular {
         if (!this.formData[key]) {
             this.formData[key] = [];
         }
-        
+
         // Verificar se há risco aplicado (não permite marcar se houver risco)
         const inputKey = key.replace('-status', '');
         const inputValue = this.formData[inputKey];
         const hasStrike = inputValue === '-' || inputValue === '_' || inputValue === '*';
-        
+
         if (hasStrike) {
             return; // Não permite marcar se há risco
         }
-        
+
         const index = this.formData[key].indexOf(value);
         if (index > -1) {
             this.formData[key].splice(index, 1);
         } else {
             this.formData[key].push(value);
         }
-        
+
         console.log('Form data updated:', this.formData);
-        
+
         // Verificar se todos estão marcados para aplicar X
         this.checkAllBrakesCheckedForStrike(key);
     }
@@ -380,10 +385,10 @@ class InspecaoVeicular {
     updateBrakeStatusBox(container, key) {
         const boxes = container.querySelectorAll('.status-box');
         const checkedValues = this.formData[key] || [];
-        
+
         boxes.forEach((box, index) => {
             const isChecked = checkedValues.includes(index);
-            
+
             if (isChecked) {
                 box.classList.add('checked');
                 box.style.opacity = '1';
@@ -405,14 +410,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function imprimirCorretamente() {
     // Adiciona classe para modo impressão
     document.body.classList.add('print-mode');
-    
+
     console.log('Preparando para impressão...');
-    
+
     // Delay um pouco maior para garantir tudo carregar
     setTimeout(() => {
         console.log('Abrindo janela de impressão...');
         window.print();
-        
+
         // Remove a classe após a impressão
         setTimeout(() => {
             document.body.classList.remove('print-mode');
@@ -422,20 +427,20 @@ function imprimirCorretamente() {
 }
 
 // Adiciona botão de impressão
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Remove botão anterior se existir
     const oldButton = document.querySelector('.print-button');
     if (oldButton) oldButton.remove();
-    
+
     const printButton = document.createElement('button');
-    printButton.innerHTML = '🖨️ Imprimir Formulário';
+    printButton.innerHTML = '🖨️ Imprimir';
     printButton.className = 'print-button no-print';
     printButton.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
         padding: 12px 18px;
-        background: #dc2626;
+        background: #038013ff;
         color: white;
         border: none;
         border-radius: 6px;
@@ -448,6 +453,6 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     printButton.onclick = imprimirCorretamente;
     document.body.appendChild(printButton);
-    
+
     console.log('Botão de impressão adicionado');
 });

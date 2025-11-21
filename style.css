@@ -22,7 +22,7 @@ body {
     min-height: 297mm;
     border: 2px solid black;
     padding: 3mm;
-    background: rgb(241, 219, 177);
+    background: rgb(230, 225, 216);
     margin: 0 auto;
 }
 
@@ -192,7 +192,7 @@ body {
 }
 
 .section-header.gray {
-    background-color: #374151;
+    background-color: #1e3a8a;
 }
 
 /* Items List - CORRIGIDO */
@@ -456,7 +456,7 @@ body {
 }
 
 .tire-header {
-    background-color: #374151;
+    background-color: #1e3a8a;
     color: white;
     padding: 6px 8px;
     font-size: 10px;
@@ -470,7 +470,7 @@ body {
 }
 
 .tire-content {
-    background-color: rgb(241, 219, 177);
+    background-color: rgb(230, 225, 216);
     padding: 8px;
     position: relative;
     z-index: 1;
@@ -684,4 +684,35 @@ body {
 body.print-mode {
     padding: 0;
     margin: 0;
+}
+
+/* =========================================== */
+/* ESTILOS PARA INPUT DE TENSÃO DA BATERIA */
+/* =========================================== */
+
+.battery-voltage-input {
+    height: 14px;
+    width: 40px;
+    text-align: center;
+    font-size: 7px;
+    border: 1px solid #9ca3af;
+    padding: 0 2px;
+    margin-left: 4px;
+    background-color: white;
+}
+
+.battery-voltage-input::placeholder {
+    color: #9ca3af;
+    font-size: 6px;
+}
+
+/* Ajuste para a linha da bateria */
+.item-row[data-id="ca-5"] {
+    align-items: center;
+}
+
+.item-row[data-id="ca-5"] .item-name {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
