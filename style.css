@@ -172,7 +172,8 @@ body {
     border: 2px solid black;
     width: 100%;
     /* Removido flex: 1 e min-height */
-    display: block; /* Mudei de flex para block */
+    display: block;
+    /* Mudei de flex para block */
     position: relative;
     overflow: hidden;
 }
@@ -359,7 +360,8 @@ body {
     position: relative;
     z-index: 2;
     /* Removido flex-shrink e min-height */
-    margin-bottom: 3px; /* Readicionado margin */
+    margin-bottom: 3px;
+    /* Readicionado margin */
 }
 
 .brake-label {
@@ -452,7 +454,8 @@ body {
     margin-bottom: 0;
     position: relative;
     /* Removido flex: 1 */
-    display: block; /* Mudei de flex para block */
+    display: block;
+    /* Mudei de flex para block */
 }
 
 .tire-header {
@@ -481,7 +484,8 @@ body {
     text-align: right;
     font-size: 8px;
     font-weight: bold;
-    margin-bottom: 8px; /* Readicionado margin */
+    margin-bottom: 8px;
+    /* Readicionado margin */
     color: #374151;
     /* Removido flex-shrink */
 }
@@ -500,7 +504,8 @@ body {
     position: relative;
     z-index: 2;
     /* Removido flex-shrink e min-height */
-    margin-bottom: 6px; /* Readicionado margin */
+    margin-bottom: 6px;
+    /* Readicionado margin */
 }
 
 .tire-label {
@@ -597,6 +602,82 @@ body {
 }
 
 /* =========================================== */
+/* ESTILOS PARA DROPDOWN DE CARROS */
+/* =========================================== */
+
+.service-types-full .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+}
+
+.service-title {
+    font-size: 11px;
+    font-weight: bold;
+    flex: 1;
+}
+
+.car-select-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.car-label {
+    font-size: 9px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.car-select {
+    height: 22px;
+    min-width: 150px;
+    border: 1px solid #9ca3af;
+    background-color: white;
+    padding: 2px 4px;
+    font-size: 9px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.car-select:focus {
+    outline: 1px solid #1e3a8a;
+    border-color: #1e3a8a;
+}
+
+/* Ajuste para o OS container */
+.service-types-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    gap: 12px;
+}
+
+.os-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.os-label {
+    font-size: 9px;
+    font-weight: 500;
+}
+
+.os-input-full {
+    width: 60px;
+    height: 22px;
+    border: 1px solid #9ca3af;
+    padding: 2px 6px;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* =========================================== */
 /* CSS PARA IMPRESSÃO - CORRIGIDO */
 /* =========================================== */
 
@@ -605,7 +686,7 @@ body {
         margin: 0;
         size: A4 portrait;
     }
-    
+
     body {
         margin: 0;
         padding: 0;
@@ -615,7 +696,7 @@ body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-    
+
     .container {
         width: 210mm;
         max-width: 210mm;
@@ -623,7 +704,7 @@ body {
         padding: 0;
         display: block;
     }
-    
+
     .form-wrapper {
         width: 210mm;
         min-height: 297mm;
@@ -634,7 +715,7 @@ body {
         break-inside: avoid;
         display: block;
     }
-    
+
     /* FORÇA O LAYOUT DE 3 COLUNAS */
     .three-columns-layout {
         display: flex;
@@ -646,7 +727,7 @@ body {
         break-inside: avoid;
         /* Removido min-height */
     }
-    
+
     .column {
         display: flex;
         flex-direction: column;
@@ -655,12 +736,12 @@ body {
         page-break-inside: avoid;
         break-inside: avoid;
     }
-    
+
     /* Remove elementos de tela */
     .no-print {
         display: none;
     }
-    
+
     /* Garante que todos os elementos sejam mostrados corretamente */
     .form-section,
     .items-list,
@@ -672,7 +753,7 @@ body {
         position: relative;
         overflow: visible;
     }
-    
+
     /* Remove flex das seções na impressão também */
     .form-section {
         /* Removido flex: 1 e min-height */

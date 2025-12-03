@@ -30,11 +30,27 @@
                 <div class="status-item original">ORIGINAL / NÃO ORIGINAL</div>
             </div>
 
-            <!-- TIPO DE SERVIÇO - AGORA EM LINHA SEPARADA -->
+            <!-- TIPO DE SERVIÇO - COM DROPDOWN DE CARROS NO LADO DIREITO -->
             <div class="service-types-full">
                 <div class="section-header">
-                    TIPO DE SERVIÇO
+                    <div class="service-title">TIPO DE SERVIÇO</div>
+                    <div class="car-select-container">
+                        <span class="car-label">CARRO:</span>
+                        <select class="car-select" id="car-select">
+                            <option value="" disabled selected>Selecione um modelo</option>
+                            <option value="hilux-arla">Hilux (com ARLA)</option>
+                            <option value="hilux-sem-arla">Hilux (sem ARLA)</option>
+                            <option value="hilux-plus">Hilux Plus</option>
+                            <option value="corolla-sedan">Corolla Sedan</option>
+                            <option value="corolla-cross">Corolla Cross</option>
+                            <option value="sw4">SW4</option>
+                            <option value="rav4">RAV4</option>
+                            <option value="etios">Etios</option>
+                            <option value="yaris">Yaris</option>
+                        </select>
+                    </div>
                 </div>
+
                 <div class="service-types-container">
                     <div class="service-options-main">
                         <label class="service-option-full">
@@ -54,6 +70,7 @@
                             <span>Toyota 10</span>
                         </label>
                     </div>
+
                     <div class="os-container">
                         <span class="os-label">Nº OS:</span>
                         <input type="text" class="os-input-full" maxlength="5" placeholder="00000">
@@ -130,7 +147,7 @@
                             </svg>
                             CALIBRAGEM DOS PNEUS •
                         </div>
-                        
+
                         <div class="tire-content">
                             <div class="calibrated-label">CALIBRADO</div>
 
